@@ -5,18 +5,18 @@ int front = -1, rear = -1;
 
 void insert() {
     int item;
-    if ((front == 0 && rear == SIZE - 1) || rear + 1 == front) {
+    if ((front == 0 && rear == SIZE - 1) || (rear + 1 == front)) {
         printf("Overflow!\n");
         return;
-    } else {
-        printf("Enter element to be inserted: ");
-        scanf("%d", &item);
-        if (front == -1) {
-            front = 0;
-        }
-        rear = (rear + 1) % SIZE;
-        queue[rear] = item;
-        printf("%d has been inserted\n", item);
+    }
+    printf("Enter element to be inserted: ");
+    scanf("%d", &item);
+    if (front == -1) {
+        front = rear = 0;
+    }else{
+    rear = (rear + 1) % SIZE;}
+    queue[rear] = item;
+    printf("%d has been inserted\n", item);
     }
 }
 
@@ -24,13 +24,12 @@ void delete() {
     if (front == -1) {
         printf("Underflow!\n");
         return;
-    } else {
-        printf("%d has been deleted\n", queue[front]);
-        if (front == rear) {
-            front = -1;
-            rear = -1;
-        }
-        front = (front + 1) % SIZE;
+    } 
+    printf("%d has been deleted\n", queue[front]);
+    if (front == rear) {
+        front = rear = -1;
+    }else{
+    front = (front + 1) % SIZE;
     }
 }
 
@@ -38,18 +37,16 @@ void display() {
     if (front == -1) {
         printf("Queue is empty!\n");
         return;
-    } else {
-        printf("Queue elements are: ");
-        int i = front;
-        while(1){
-            printf("%d ", queue[i]);
-            if(i == rear){
-                break;
-            }
-            i = (i + 1) % SIZE;
-            printf("\n");
+    } 
+    printf("Queue elements are: ");
+    int i = front;
+    while(1){
+        printf("%d ", queue[i]);
+        if(i == rear){
+            break;
         }
-    }
+        i = (i + 1) % SIZE;
+    }printf("\n");
 }
 
 int main() {
