@@ -9,7 +9,7 @@ void insert(){
         return;
     }
     else{
-        printf("Enter element to e inserted:");
+        printf("Enter element to be inserted:");
         scanf("%d",&item);
         if(front==-1){
             front=0;
